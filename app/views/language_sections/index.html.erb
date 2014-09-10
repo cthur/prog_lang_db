@@ -1,0 +1,29 @@
+<h1>Listing language_sections</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lang</th>
+      <th>Section</th>
+      <th>Info</th>
+      <th>CRUD</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @language_sections.each do |language_section| %>
+      <tr>
+        <td><%= language_section.language %></td>
+        <td><%= language_section.section %></td>
+        <td><%= language_section.info %></td>
+        <td><%= link_to 'Show', language_section %> | 
+        	<%= link_to 'Edit', edit_language_section_path(language_section) %> | 
+        	<%= link_to 'Destroy', language_section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Language section', new_language_section_path %>

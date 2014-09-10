@@ -1,0 +1,32 @@
+<%= render 'side_bar' %>
+
+<div id="main" class="col-md-9">
+	
+	<ul class="nav nav-tabs" role="tablist">
+		<!-- TODO: create a feature that assigns the class="active" to the li associated with the current language being viewed -->
+		<% @languages.each do |l| %>
+			<% if l.name != @cur_lang %>
+				<li>
+			<% else %>
+				<li class="active">
+			<% end %>
+			
+			<a ahref='#<%= l.name.downcase %>' role="tab" data-toggle="tab"><%= l.name %></a></li>
+		<% end %>
+	</ul>
+		
+	<div class="tab-content panel panel-default">
+		<div class="tab-pane active panel-body" id='<%= @cur_lang.downcase %>'>
+		
+			<%= @language_section.info %>			
+		
+		</div>
+		
+		<!-- TODO: Only admins can access -->
+		<%= link_to 'Edit', edit_language_section_path(@language_section) %> |
+		<%= link_to 'Back', language_sections_path %>
+	</div>
+
+</div>
+
+
